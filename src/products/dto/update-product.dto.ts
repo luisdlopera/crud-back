@@ -1,15 +1,17 @@
-import { IsString, IsNumber, IsOptional } from 'class-validator';
+import { IsString, IsNumber, IsOptional, IsNotEmpty, IsPositive } from 'class-validator';
+import { Transform } from 'class-transformer';
 
 export class UpdateProductDto {
-    @IsString()
-    @IsOptional()
+    @IsNotEmpty({ message: 'El nombre del producto es obligatorio' })
+    @IsString({ message: 'El nombre debe ser un texto' })
     name?: string;
 
-    @IsNumber()
-    @IsOptional()
+    @Transform(({ value }) => parseFloat(value))
+    @IsNotEmpty({ message: 'El precio del producto es obligatorio' })
+    @IsNumber({}, { message: 'El precio debe ser un número' })
+    @IsPositive({ message: 'El precio debe ser un número positivo' })
     price?: number;
 
-    @IsString()
-    @IsOptional()
+    @IsString({ message: 'La descripción debe ser un texto' })
     description?: string;
 }
