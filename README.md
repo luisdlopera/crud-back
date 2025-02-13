@@ -69,6 +69,6 @@ http://localhost:3000/api
 | `npx prisma migrate dev --name init` | Crea y aplica migraciones en la base de datos |
 | `npx prisma generate` | Genera el cliente de Prisma |
 | `docker-compose up -d` | Levanta la base de datos PostgreSQL con Docker |
-
+| `docker-compose down` | Baja la base de datos PostgreSQL con Docker |
 ---
 

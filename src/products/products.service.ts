@@ -8,11 +8,13 @@ import { ProductResponseDto } from './dto/product-response.dto';
 export class ProductsService {
 
   constructor(private prisma: PrismaService) { }
-
   async createProduct(data: CreateProductDto): Promise<ProductResponseDto> {
+    
+    if (typeof data.price === 'string') {
+      data.price = parseFloat(data.price);
+    }
     const product = await this.prisma.product.create({ data });
     return this.toProductResponseDto(product);
-    
   }
 
   async findAllProducts() {
