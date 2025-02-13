@@ -19,7 +19,9 @@ npm install
 Crea un archivo `.env` en la raíz con las siguientes variables:
 ```env
 DATABASE_URL=postgresql://user:password@localhost:5432/mydatabase
-PORT=3000
+POSTGRES_USER=user
+POSTGRES_PASSWORD=password
+POSTGRES_DB=mydatabase
 ```
 
 ## 🐳 Uso con Docker y PostgreSQL
